@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Sentinel | Issue Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="top-bar">
+        <h1>QA_SENTINEL.v1</h1>
+        <button id="new-ticket-btn" onclick="openModal()">+ Create Ticket</button>
+    </nav>
+
+    <div class="kanban-board">
+        <div class="column" id="todo">
+            <h2>To Do</h2>
+            <div class="ticket-container"></div>
+        </div>
+        <div class="column" id="in-progress">
+            <h2>In Progress</h2>
+            <div class="ticket-container"></div>
+        </div>
+        <div class="column" id="resolved">
+            <h2>Resolved</h2>
+            <div class="ticket-container"></div>
+        </div>
+    </div>
+
+    <div id="modal" class="hidden">
+        <div class="modal-content">
+            <h3>Log New Issue</h3>
+            <label>Summary</label>
+            <input type="text" id="ticket-title" placeholder="What is the bug?">
+            
+            <label>Priority</label>
+            <select id="ticket-priority">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+
+            <label>Description</label>
+            <textarea id="ticket-desc" placeholder="Steps to reproduce..."></textarea>
+            
+            <div class="modal-actions">
+                <button onclick="submitTicket()" class="btn-primary">Submit to Database</button>
+                <button onclick="closeModal()" class="btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+</body>
+</html>
